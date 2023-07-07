@@ -1,6 +1,16 @@
-import {Component} from "../core/chopaky";
+import { Component } from "../core/chopaky";
+import { newMovieId as movieId } from "../routes/Movie";
+
+interface State{
+  [key: string]: unknown
+  menus: {
+    name: string
+    href: string
+  }[]
+}
 
 export default class TheHeader extends Component{
+  public state!: State
   constructor() {
     super({
       tagName: 'header',
@@ -12,7 +22,7 @@ export default class TheHeader extends Component{
           },
           {
             name: 'Movie',
-            href: '#/movie?id=tt4520988'
+            href: `#/movie?id=`
           },
           {
             name: 'About',
@@ -42,7 +52,11 @@ export default class TheHeader extends Component{
             <li>
               <a 
                 class = "${isActive ? 'active' : ''}"
-                href="${menu.href}">
+                href="${
+                  menu.name === 'Movie'
+                  ? menu.href + movieId // 최신화된 movie id를 표시
+                  : menu.href
+                  }">
                 ${menu.name}
               </a>
             </li>`

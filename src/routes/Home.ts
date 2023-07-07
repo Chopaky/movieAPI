@@ -1,7 +1,6 @@
 import { Component } from "../core/chopaky";
 import Headline from "../components/Headline";
 import Search from "../components/Search";
-import Search from "../components/Search";
 import MovieList from "../components/MovieList";
 import MovieListMore from "../components/MovieListMore";
 

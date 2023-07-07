@@ -1,6 +1,8 @@
 import { Component } from "../core/chopaky";
 import movieStore,{getMovieDetails} from "../store/movie";
 
+export let newMovieId: string = 'tt4520988' // 영화 아이디 기본값
+
 export default class Movie extends Component{
   async render(){
     this.el.classList.add('container', 'the-movie')
@@ -13,10 +15,11 @@ export default class Movie extends Component{
       </div>
     `
     await getMovieDetails(history.state.id);
+    newMovieId = history.state.id // 영화 검색 시 헤더의 href주소를 변경
     console.log(movieStore.state.movie);
     const { movie } = movieStore.state
     const bigPoster = movie.Poster.replace('SX300','SX700');
-
+    
     
     this.el.innerHTML = /* html */`
       <div 
